@@ -1,5 +1,5 @@
 /*
- * DESTINO: PALAVRAS
+ * CONEXÕES DE MUNDO
  * Jogo educacional de Inglês e Espanhol com tema de viagem.
  */
 (function () {
@@ -9,11 +9,10 @@
   var CONFIG = {
     totalRodadas: 10,
     vidasIniciais: 3,
-    nomeJogo: "destino-palavras",
+    nomeJogo: "conexoes-de-mundo",
   };
 
-  // Banco de perguntas dividido por nível de dificuldade (10 rodadas por nível)
-  // A cada rodada o país muda para um destino onde se fala aquele idioma
+  // Banco de perguntas dividido por nível de dificuldade (10 de inglês e 10 de espanhol por nível)
   var PERGUNTAS = {
     facil: [
       {
@@ -125,6 +124,116 @@
         opcoes: ["drinks", "bebe", "writes"],
         correta: "drinks",
         explicacao: 'Em inglês, com "He" (ele), o verbo "drink" ganha um "s": "drinks".',
+      },
+      {
+        pais: "Chile",
+        bandeira: "🇨🇱",
+        idioma: "espanhol",
+        antes: "Me gusta",
+        depois: "en el parque.",
+        dica: 'Tradução: "Eu gosto de caminhar no parque."',
+        opcoes: ["caminar", "walk", "dormir"],
+        correta: "caminar",
+        explicacao: 'Em espanhol, "caminar" significa caminhar ou andar a pé.',
+      },
+      {
+        pais: "Austrália",
+        bandeira: "🇦🇺",
+        idioma: "ingles",
+        antes: "The",
+        depois: "is blue and warm.",
+        dica: 'Tradução: "O mar é azul e quentinho."',
+        opcoes: ["sea", "mar", "sun"],
+        correta: "sea",
+        explicacao: 'Em inglês, "sea" significa mar.',
+      },
+      {
+        pais: "Peru",
+        bandeira: "🇵🇪",
+        idioma: "espanhol",
+        antes: "Ellos",
+        depois: "un libro de historia.",
+        dica: 'Tradução: "Eles leem um livro de história."',
+        opcoes: ["leen", "read", "escriben"],
+        correta: "leen",
+        explicacao: 'Em espanhol, "leen" vem do verbo "leer" (ler).',
+      },
+      {
+        pais: "Irlanda",
+        bandeira: "🇮🇪",
+        idioma: "ingles",
+        antes: "I",
+        depois: "my new green jacket.",
+        dica: 'Tradução: "Eu visto minha jaqueta verde nova."',
+        opcoes: ["wear", "visto", "eat"],
+        correta: "wear",
+        explicacao: 'Em inglês, "wear" é o verbo usar/vestir roupas.',
+      },
+      {
+        pais: "Colômbia",
+        bandeira: "🇨🇴",
+        idioma: "espanhol",
+        antes: "Mi",
+        depois: "viaja conmigo.",
+        dica: 'Tradução: "Minha amiga viaja comigo."',
+        opcoes: ["amiga", "friend", "perro"],
+        correta: "amiga",
+        explicacao: 'Em espanhol, "amiga" se escreve igual ao português.',
+      },
+      {
+        pais: "Canadá",
+        bandeira: "🇨🇦",
+        idioma: "ingles",
+        antes: "Look at the",
+        depois: "in the sky!",
+        dica: 'Tradução: "Olhe para as estrelas no céu!"',
+        opcoes: ["stars", "estrellas", "trees"],
+        correta: "stars",
+        explicacao: 'Em inglês, "stars" significa estrelas.',
+      },
+      {
+        pais: "México",
+        bandeira: "🇲🇽",
+        idioma: "espanhol",
+        antes: "Hoy hace mucho",
+        depois: "en la playa.",
+        dica: 'Tradução: "Hoje faz muito sol na praia."',
+        opcoes: ["sol", "sun", "frío"],
+        correta: "sol",
+        explicacao: 'Em espanhol, "sol" significa sol.',
+      },
+      {
+        pais: "Inglaterra",
+        bandeira: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        idioma: "ingles",
+        antes: "You",
+        depois: "very fast!",
+        dica: 'Tradução: "Você corre muito rápido!"',
+        opcoes: ["run", "corres", "sit"],
+        correta: "run",
+        explicacao: 'Em inglês, "run" é o verbo correr.',
+      },
+      {
+        pais: "Espanha",
+        bandeira: "🇪🇸",
+        idioma: "espanhol",
+        antes: "Abro la",
+        depois: "del hotel.",
+        dica: 'Tradução: "Eu abro a porta do hotel."',
+        opcoes: ["puerta", "door", "ventana"],
+        correta: "puerta",
+        explicacao: 'Em espanhol, "puerta" significa porta.',
+      },
+      {
+        pais: "Estados Unidos",
+        bandeira: "🇺🇸",
+        idioma: "ingles",
+        antes: "We",
+        depois: "music on the plane.",
+        dica: 'Tradução: "Nós ouvimos música no avião."',
+        opcoes: ["listen to", "escuchamos", "look"],
+        correta: "listen to",
+        explicacao: 'Em inglês, "listen to" significa ouvir/escutar.',
       },
     ],
 
@@ -239,6 +348,116 @@
         correta: "pack",
         explicacao: 'Em inglês, "pack" significa arrumar as malas ou a mochila.',
       },
+      {
+        pais: "Chile",
+        bandeira: "🇨🇱",
+        idioma: "espanhol",
+        antes: "Ustedes",
+        depois: "muy temprano al aeropuerto.",
+        dica: 'Tradução: "Vocês chegam muito cedo ao aeroporto."',
+        opcoes: ["llegan", "arrive", "salen"],
+        correta: "llegan",
+        explicacao: 'Em espanhol, "llegan" vem do verbo "llegar" (chegar).',
+      },
+      {
+        pais: "Austrália",
+        bandeira: "🇦🇺",
+        idioma: "ingles",
+        antes: "He",
+        depois: "postcards to his friends.",
+        dica: 'Tradução: "Ele envia cartões-postais para os amigos dele."',
+        opcoes: ["sends", "envía", "buys"],
+        correta: "sends",
+        explicacao: 'Em inglês, "sends" vem do verbo "send" (enviar).',
+      },
+      {
+        pais: "Peru",
+        bandeira: "🇵🇪",
+        idioma: "espanhol",
+        antes: "Quiero",
+        depois: "el museo nacional.",
+        dica: 'Tradução: "Eu quero conhecer o museu nacional."',
+        opcoes: ["conocer", "meet", "cerrar"],
+        correta: "conocer",
+        explicacao: 'Em espanhol, "conocer" significa conhecer um lugar ou pessoa.',
+      },
+      {
+        pais: "Irlanda",
+        bandeira: "🇮🇪",
+        idioma: "ingles",
+        antes: "Can you",
+        depois: "the window, please?",
+        dica: 'Tradução: "Você pode abrir a janela, por favor?"',
+        opcoes: ["open", "abrir", "close"],
+        correta: "open",
+        explicacao: 'Em inglês, "open" significa abrir.',
+      },
+      {
+        pais: "Colômbia",
+        bandeira: "🇨🇴",
+        idioma: "espanhol",
+        antes: "El",
+        depois: "está en el segundo piso.",
+        dica: 'Tradução: "O quarto fica no segundo andar."',
+        opcoes: ["cuarto", "room", "baño"],
+        correta: "cuarto",
+        explicacao: 'Em espanhol, "cuarto" (ou habitación) significa quarto.',
+      },
+      {
+        pais: "Estados Unidos",
+        bandeira: "🇺🇸",
+        idioma: "ingles",
+        antes: "We are",
+        depois: "for the taxi outside.",
+        dica: 'Tradução: "Nós estamos esperando o táxi lá fora."',
+        opcoes: ["waiting", "esperando", "running"],
+        correta: "waiting",
+        explicacao: 'Em inglês, "waiting" significa esperando.',
+      },
+      {
+        pais: "Argentina",
+        bandeira: "🇦🇷",
+        idioma: "espanhol",
+        antes: "Siempre",
+        depois: "mi cámara en la mochila.",
+        dica: 'Tradução: "Eu sempre guardo minha câmera na mochila."',
+        opcoes: ["guardo", "keep", "pierdo"],
+        correta: "guardo",
+        explicacao: 'Em espanhol, "guardo" vem do verbo "guardar".',
+      },
+      {
+        pais: "Inglaterra",
+        bandeira: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        idioma: "ingles",
+        antes: "The bridge",
+        depois: "the river in the city.",
+        dica: 'Tradução: "A ponte atravessa o rio na cidade."',
+        opcoes: ["crosses", "cruza", "stops"],
+        correta: "crosses",
+        explicacao: 'Em inglês, "crosses" vem do verbo "cross" (atravessar).',
+      },
+      {
+        pais: "Espanha",
+        bandeira: "🇪🇸",
+        idioma: "espanhol",
+        antes: "Necesitamos",
+        depois: "las entradas antes.",
+        dica: 'Tradução: "Nós precisamos reservar os ingressos antes."',
+        opcoes: ["reservar", "book", "pagar"],
+        correta: "reservar",
+        explicacao: 'Em espanhol, "reservar" significa fazer uma reserva.',
+      },
+      {
+        pais: "Canadá",
+        bandeira: "🇨🇦",
+        idioma: "ingles",
+        antes: "She",
+        depois: "two languages very well.",
+        dica: 'Tradução: "Ela fala dois idiomas muito bem."',
+        opcoes: ["speaks", "habla", "writes"],
+        correta: "speaks",
+        explicacao: 'Em inglês, "speaks" significa fala (verbo speak para she).',
+      },
     ],
 
     dificil: [
@@ -352,12 +571,124 @@
         correta: "viajar",
         explicacao: 'Em espanhol, o verbo no infinitivo "viajar" completa a frase perfeitamente.',
       },
+      {
+        pais: "Chile",
+        bandeira: "🇨🇱",
+        idioma: "espanhol",
+        antes: "El vuelo",
+        depois: "sin problemas a Santiago.",
+        dica: 'Tradução: "O voo aterrissou sem problemas em Santiago."',
+        opcoes: ["aterrizó", "landed", "despegó"],
+        correta: "aterrizó",
+        explicacao: 'Em espanhol, "aterrizó" é o passado de "aterrizar" (pousar/aterrissar).',
+      },
+      {
+        pais: "Austrália",
+        bandeira: "🇦🇺",
+        idioma: "ingles",
+        antes: "We",
+        depois: "our tickets online last week.",
+        dica: 'Tradução: "Nós compramos nossas passagens online semana passada."',
+        opcoes: ["bought", "compramos", "buy"],
+        correta: "bought",
+        explicacao: '"Bought" é o passado do verbo "buy" (comprar) em inglês.',
+      },
+      {
+        pais: "Peru",
+        bandeira: "🇵🇪",
+        idioma: "espanhol",
+        antes: "Subimos la montaña",
+        depois: "el amanecer.",
+        dica: 'Tradução: "Subimos a montanha para ver o amanhecer."',
+        opcoes: ["para ver", "to see", "sin ver"],
+        correta: "para ver",
+        explicacao: 'Em espanhol, "para ver" indica a finalidade de subir a montanha.',
+      },
+      {
+        pais: "Irlanda",
+        bandeira: "🇮🇪",
+        idioma: "ingles",
+        antes: "They have already",
+        depois: "at the hotel.",
+        dica: 'Tradução: "Eles já fizeram o check-in no hotel."',
+        opcoes: ["checked in", "registrado", "arrived"],
+        correta: "checked in",
+        explicacao: '"Checked in" é a expressão usada em hotéis e aeroportos em inglês.',
+      },
+      {
+        pais: "Colômbia",
+        bandeira: "🇨🇴",
+        idioma: "espanhol",
+        antes: "El equipaje de mano",
+        depois: "debajo del asiento.",
+        dica: 'Tradução: "A bagagem de mão cabe embaixo do assento."',
+        opcoes: ["cabe", "fits", "pesa"],
+        correta: "cabe",
+        explicacao: 'Em espanhol, "cabe" vem do verbo "caber".',
+      },
+      {
+        pais: "Canadá",
+        bandeira: "🇨🇦",
+        idioma: "ingles",
+        antes: "Remember to",
+        depois: "your seatbelt during takeoff.",
+        dica: 'Tradução: "Lembre-se de apertar o cinto de segurança na decolagem."',
+        opcoes: ["fasten", "abrochar", "open"],
+        correta: "fasten",
+        explicacao: '"Fasten your seatbelt" é o aviso padrão dos aviões em inglês.',
+      },
+      {
+        pais: "Argentina",
+        bandeira: "🇦🇷",
+        idioma: "espanhol",
+        antes: "Probamos platos que nunca habíamos",
+        depois: "antes.",
+        dica: 'Tradução: "Provamos pratos que nunca tínhamos comido antes."',
+        opcoes: ["comido", "eaten", "bebido"],
+        correta: "comido",
+        explicacao: 'Em espanhol, "habíamos comido" é o particípio do verbo comer.',
+      },
+      {
+        pais: "Inglaterra",
+        bandeira: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        idioma: "ingles",
+        antes: "The",
+        depois: "announced the gate number.",
+        dica: 'Tradução: "A tripulação anunciou o número do portão."',
+        opcoes: ["crew", "tripulación", "driver"],
+        correta: "crew",
+        explicacao: 'Em inglês, "crew" significa tripulação de voo ou navio.',
+      },
+      {
+        pais: "Espanha",
+        bandeira: "🇪🇸",
+        idioma: "espanhol",
+        antes: "Aunque llovía, seguimos",
+        depois: "la ciudad.",
+        dica: 'Tradução: "Embora chovesse, continuamos explorando a cidade."',
+        opcoes: ["explorando", "exploring", "durmiendo"],
+        correta: "explorando",
+        explicacao: 'Em espanhol, o gerúndio "explorando" completa a ação contínua.',
+      },
+      {
+        pais: "Estados Unidos",
+        bandeira: "🇺🇸",
+        idioma: "ingles",
+        antes: "It was an",
+        depois: "journey across the country.",
+        dica: 'Tradução: "Foi uma jornada inesquecível pelo país."',
+        opcoes: ["unforgettable", "inolvidable", "easy"],
+        correta: "unforgettable",
+        explicacao: 'Em inglês, "unforgettable" significa inesquecível.',
+      },
     ],
   };
 
   // Estado atual da partida
   var estado = {
+    modoIdioma: "misto", // "misto", "ingles" ou "espanhol"
     nivel: "facil",
+    perguntasDaPartida: [],
     rodadaAtual: 0,
     pontos: 0,
     vidas: CONFIG.vidasIniciais,
@@ -417,7 +748,15 @@
     return "Fácil";
   }
 
-  // Inicia a viagem no nível escolhido
+  // Seleciona o modo de idioma na tela inicial
+  function escolherModoIdioma(modo) {
+    estado.modoIdioma = modo;
+    document.querySelectorAll(".btn-choice").forEach(function (btn) {
+      btn.classList.toggle("selected", btn.dataset.mode === modo);
+    });
+  }
+
+  // Inicia a viagem no nível e idioma escolhidos
   function iniciarJogo(nivel) {
     estado.nivel = nivel;
     estado.rodadaAtual = 0;
@@ -426,7 +765,24 @@
     estado.finalizado = false;
     estado.inicioEmMs = Date.now();
 
-    els.totalRounds.textContent = String(CONFIG.totalRodadas);
+    var bancoNivel = PERGUNTAS[nivel];
+    var filtradas;
+
+    if (estado.modoIdioma === "ingles") {
+      filtradas = bancoNivel.filter(function (q) {
+        return q.idioma === "ingles";
+      });
+    } else if (estado.modoIdioma === "espanhol") {
+      filtradas = bancoNivel.filter(function (q) {
+        return q.idioma === "espanhol";
+      });
+    } else {
+      filtradas = bancoNivel.slice();
+    }
+
+    estado.perguntasDaPartida = filtradas.slice(0, CONFIG.totalRodadas);
+
+    els.totalRounds.textContent = String(estado.perguntasDaPartida.length);
     els.scoreDisplay.textContent = "0";
     els.levelBadge.textContent = nomeDoNivel(nivel);
     atualizarVidas();
@@ -441,8 +797,7 @@
 
   // Carrega a pergunta e o país da rodada atual
   function carregarRodada() {
-    var lista = PERGUNTAS[estado.nivel];
-    var questao = lista[estado.rodadaAtual];
+    var questao = estado.perguntasDaPartida[estado.rodadaAtual];
 
     estado.idiomaSelecionado = null;
     estado.palavraSelecionada = null;
@@ -479,12 +834,10 @@
       chip.draggable = true;
       chip.dataset.word = palavra;
 
-      // Clique ou toque na palavra
       chip.addEventListener("click", function () {
         selecionarPalavra(palavra);
       });
 
-      // Início do arraste (computador)
       chip.addEventListener("dragstart", function (event) {
         if (estado.rodadaRespondida) {
           event.preventDefault();
@@ -570,13 +923,12 @@
   // Confere se o idioma e a palavra estão certos
   function verificarResposta() {
     estado.rodadaRespondida = true;
-    var questao = PERGUNTAS[estado.nivel][estado.rodadaAtual];
+    var questao = estado.perguntasDaPartida[estado.rodadaAtual];
 
     var idiomaCerto = estado.idiomaSelecionado === questao.idioma;
     var palavraCerta = estado.palavraSelecionada === questao.correta;
     var acertouTudo = idiomaCerto && palavraCerta;
 
-    // Trava os botões enquanto mostra a explicação
     document.querySelectorAll(".btn-lang, .word-chip").forEach(function (el) {
       el.disabled = true;
     });
@@ -620,8 +972,10 @@
       els.feedbackReason.textContent = motivoErro + questao.explicacao;
     }
 
-    // Ajusta o texto do botão para encerrar se acabaram as vidas ou as 10 rodadas
-    if (estado.vidas <= 0 || estado.rodadaAtual + 1 >= CONFIG.totalRodadas) {
+    if (
+      estado.vidas <= 0 ||
+      estado.rodadaAtual + 1 >= estado.perguntasDaPartida.length
+    ) {
       els.nextRound.textContent = "Ver resultado da viagem 🏁";
     } else {
       els.nextRound.textContent = "Próximo destino ✈️";
@@ -638,7 +992,7 @@
     }
 
     estado.rodadaAtual += 1;
-    if (estado.rodadaAtual >= CONFIG.totalRodadas) {
+    if (estado.rodadaAtual >= estado.perguntasDaPartida.length) {
       finalizarJogo(true);
       return;
     }
@@ -650,6 +1004,7 @@
   function finalizarJogo(completou) {
     estado.finalizado = true;
     var tempoEmMs = estado.inicioEmMs ? Date.now() - estado.inicioEmMs : 0;
+    var maximo = estado.perguntasDaPartida.length;
 
     els.result.hidden = false;
 
@@ -660,7 +1015,7 @@
         "Você acertou " +
         estado.pontos +
         " de " +
-        CONFIG.totalRodadas +
+        maximo +
         " destinos no nível " +
         nomeDoNivel(estado.nivel) +
         " em " +
@@ -680,11 +1035,12 @@
       {
         type: "vrgame:finish",
         score: estado.pontos,
-        maxScore: CONFIG.totalRodadas,
+        maxScore: maximo,
         timeMs: tempoEmMs,
         detail: {
           jogo: CONFIG.nomeJogo,
           nivel: estado.nivel,
+          idioma: estado.modoIdioma,
         },
       },
       "*"
@@ -693,7 +1049,7 @@
     reportHeight();
   }
 
-  // Volta para a tela de escolha de dificuldade
+  // Volta para a tela inicial
   function voltarAoInicio() {
     estado.finalizado = false;
     estado.rodadaAtual = 0;
@@ -762,6 +1118,12 @@
   });
 
   // Eventos dos botões
+  document.querySelectorAll(".btn-choice").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      escolherModoIdioma(btn.dataset.mode);
+    });
+  });
+
   document.querySelectorAll(".btn-level").forEach(function (btn) {
     btn.addEventListener("click", function () {
       iniciarJogo(btn.dataset.level);
