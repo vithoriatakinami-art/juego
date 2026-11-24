@@ -4,42 +4,112 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <title>Modelo de Jogo — Jogos VR</title>
+    <title>Destino: Palavras</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="app">
+      <!-- Cabeçalho com título do jogo e botão de reiniciar -->
       <header class="top">
         <div>
-          <span class="kicker">Modelo</span>
-          <h1 id="title">Clique no Alvo</h1>
-          <p class="subtitle">Troque este jogo pelo seu. O contrato já está pronto.</p>
+          <span class="kicker">Passaporte de Idiomas</span>
+          <h1 id="title">Destino: Palavras</h1>
+          <p class="subtitle">Descubra o idioma do destino e complete a frase de viagem.</p>
         </div>
         <button id="restart" class="btn" type="button">Reiniciar</button>
       </header>
 
       <main>
-        <div class="hud">
-          <span class="pill">Alvos: <strong id="score">0</strong>/<span id="total">10</span></span>
-          <span class="pill">Tempo: <strong id="timer">0,0s</strong></span>
+        <!-- Placar superior: rodada, pontos e vidas (borboletas) -->
+        <div class="hud" aria-label="Informações da partida">
+          <span class="pill">Rodada: <strong id="round-display">0</strong>/<span id="total-rounds">10</span></span>
+          <span class="pill">Pontos: <strong id="score-display">0</strong></span>
+          <span class="pill vidas-pill" aria-label="Vidas restantes">
+            Vidas: <span id="butterflies" class="butterflies">🦋🦋🦋</span>
+          </span>
         </div>
 
-        <div id="board" class="board" aria-label="Área do jogo">
-          <p id="start-hint" class="start-hint">Clique no alvo para começar</p>
-        </div>
+        <!-- Tela inicial para escolher a dificuldade -->
+        <section id="start-screen" class="panel start-panel">
+          <div class="passport-badge" aria-hidden="true">🛂 ✈️ 🗺️</div>
+          <h2>Escolha o nível da sua viagem</h2>
+          <p class="start-desc">
+            Em cada parada, você vai identificar se a frase está em <strong>Inglês</strong> ou <strong>Espanhol</strong> e completar o espaço vazio com o verbo ou palavra certa.
+          </p>
+
+          <div class="difficulty-grid">
+            <button type="button" class="btn btn-level" data-level="facil">
+              <span class="level-title">🟢 Fácil</span>
+              <span class="level-info">Frases curtas do dia a dia</span>
+            </button>
+            <button type="button" class="btn btn-level" data-level="medio">
+              <span class="level-title">🟡 Médio</span>
+              <span class="level-info">Verbos no presente e situações de passeio</span>
+            </button>
+            <button type="button" class="btn btn-level" data-level="dificil">
+              <span class="level-title">🔴 Difícil</span>
+              <span class="level-info">Verbos variados e expressões de viagem</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Área principal do desafio (aparece depois de escolher o nível) -->
+        <section id="game-screen" class="panel game-panel" hidden>
+          <!-- Cartão do país atual -->
+          <div class="destination-card">
+            <span id="country-flag" class="country-flag" aria-hidden="true">🇲🇽</span>
+            <div class="destination-info">
+              <span class="stamp-label">Destino atual</span>
+              <strong id="country-name" class="country-name">México</strong>
+            </div>
+            <span id="level-badge" class="level-badge">Fácil</span>
+          </div>
+
+          <!-- Frase com espaço vazio para preencher -->
+          <div class="sentence-box">
+            <p class="instruction-step" id="step-hint">Passo 1: Qual idioma se fala neste desafio?</p>
+            <p id="sentence-text" class="sentence-text" aria-live="polite">
+              Yo <span id="blank-slot" class="blank-slot" tabindex="0" aria-label="Espaço vazio da frase">______</span> un boleto.
+            </p>
+            <p id="sentence-clue" class="sentence-clue">Dica: "Eu compro uma passagem."</p>
+          </div>
+
+          <!-- Passo 1: Escolher o idioma -->
+          <div class="step-block">
+            <span class="block-label">1. Selecione o idioma da frase:</span>
+            <div class="lang-buttons">
+              <button type="button" class="btn btn-lang" data-lang="ingles">Inglês</button>
+              <button type="button" class="btn btn-lang" data-lang="espanhol">Espanhol</button>
+            </div>
+          </div>
+
+          <!-- Passo 2: Arrastar ou tocar na palavra certa -->
+          <div class="step-block">
+            <span class="block-label">2. Arraste ou toque na palavra que completa a frase:</span>
+            <div id="word-options" class="word-options" role="group" aria-label="Opções de palavras"></div>
+          </div>
+
+          <!-- Retorno explicativo após responder -->
+          <div id="feedback-box" class="feedback-box" hidden aria-live="polite">
+            <p id="feedback-title" class="feedback-title"></p>
+            <p id="feedback-reason" class="feedback-reason"></p>
+            <button id="next-round" class="btn btn-primary full" type="button">Próximo destino ✈️</button>
+          </div>
+        </section>
       </main>
 
       <footer class="bottom">
-        <p>Este é o arquivo <code>game.js</code>. Leia os comentários e adapte.</p>
+        <p>Destino: Palavras — Prática de Inglês e Espanhol</p>
       </footer>
     </div>
 
+    <!-- Janela final com o resultado da viagem -->
     <div id="result" class="overlay" hidden>
       <div class="modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
-        <div class="modal-icon" aria-hidden="true">🎯</div>
-        <h2 id="result-title">Muito bem!</h2>
-        <p id="result-text">Você concluiu o jogo.</p>
-        <button id="play-again" class="btn btn-primary full" type="button">Jogar de novo</button>
+        <div id="result-icon" class="modal-icon" aria-hidden="true">🧳</div>
+        <h2 id="result-title">Viagem concluída!</h2>
+        <p id="result-text">Você completou sua jornada.</p>
+        <button id="play-again" class="btn btn-primary full" type="button">Viajar novamente</button>
       </div>
     </div>
 
