@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <title>Destino: Palavras</title>
+    <title>Conexões de Mundo</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -13,7 +13,7 @@
       <header class="top">
         <div>
           <span class="kicker">Passaporte de Idiomas</span>
-          <h1 id="title">Destino: Palavras</h1>
+          <h1 id="title">Conexões de Mundo</h1>
           <p class="subtitle">Descubra o idioma do destino e complete a frase de viagem.</p>
         </div>
         <button id="restart" class="btn" type="button">Reiniciar</button>
@@ -29,31 +29,51 @@
           </span>
         </div>
 
-        <!-- Tela inicial para escolher a dificuldade -->
+        <!-- Tela inicial para escolher idioma e dificuldade -->
         <section id="start-screen" class="panel start-panel">
-          <div class="passport-badge" aria-hidden="true">🛂 ✈️ 🗺️</div>
-          <h2>Escolha o nível da sua viagem</h2>
+          <div class="passport-badge" aria-hidden="true">🛂 ✈️ 🦋</div>
+          <h2>Prepare sua viagem</h2>
           <p class="start-desc">
-            Em cada parada, você vai identificar se a frase está em <strong>Inglês</strong> ou <strong>Espanhol</strong> e completar o espaço vazio com o verbo ou palavra certa.
+            Escolha qual idioma você quer treinar e o nível do desafio antes de embarcar.
           </p>
 
-          <div class="difficulty-grid">
-            <button type="button" class="btn btn-level" data-level="facil">
-              <span class="level-title">🟢 Fácil</span>
-              <span class="level-info">Frases curtas do dia a dia</span>
-            </button>
-            <button type="button" class="btn btn-level" data-level="medio">
-              <span class="level-title">🟡 Médio</span>
-              <span class="level-info">Verbos no presente e situações de passeio</span>
-            </button>
-            <button type="button" class="btn btn-level" data-level="dificil">
-              <span class="level-title">🔴 Difícil</span>
-              <span class="level-info">Verbos variados e expressões de viagem</span>
-            </button>
+          <!-- Escolha do idioma -->
+          <div class="setup-group">
+            <span class="setup-label">1. Qual idioma você quer praticar?</span>
+            <div class="lang-choice-grid" role="group" aria-label="Escolha de idioma">
+              <button type="button" class="btn btn-choice selected" data-mode="misto">
+                🌎 Inglês e Espanhol
+              </button>
+              <button type="button" class="btn btn-choice" data-mode="ingles">
+                🇬🇧 Só Inglês
+              </button>
+              <button type="button" class="btn btn-choice" data-mode="espanhol">
+                🇪🇸 Só Espanhol
+              </button>
+            </div>
+          </div>
+
+          <!-- Escolha do nível -->
+          <div class="setup-group">
+            <span class="setup-label">2. Escolha o nível para começar:</span>
+            <div class="difficulty-grid">
+              <button type="button" class="btn btn-level" data-level="facil">
+                <span class="level-title">🌸 Fácil</span>
+                <span class="level-info">Frases curtas do dia a dia</span>
+              </button>
+              <button type="button" class="btn btn-level" data-level="medio">
+                <span class="level-title">💜 Médio</span>
+                <span class="level-info">Verbos no presente e situações de passeio</span>
+              </button>
+              <button type="button" class="btn btn-level" data-level="dificil">
+                <span class="level-title">🌌 Difícil</span>
+                <span class="level-info">Verbos variados e expressões de viagem</span>
+              </button>
+            </div>
           </div>
         </section>
 
-        <!-- Área principal do desafio (aparece depois de escolher o nível) -->
+        <!-- Área principal do desafio -->
         <section id="game-screen" class="panel game-panel" hidden>
           <!-- Cartão do país atual -->
           <div class="destination-card">
@@ -99,7 +119,7 @@
       </main>
 
       <footer class="bottom">
-        <p>Destino: Palavras — Prática de Inglês e Espanhol</p>
+        <p>Conexões de Mundo — Prática de Inglês e Espanhol</p>
       </footer>
     </div>
 
